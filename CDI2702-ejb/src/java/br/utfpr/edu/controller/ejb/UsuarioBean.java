@@ -20,7 +20,10 @@ public class UsuarioBean implements UsuarioBeanLocal {
     @Override
     @LoginInterceptor
     public String efetuarLogin(Usuario usuario) {
-       return "index.xhtml";
+        if(usuario.isBannedFlag()){
+            return "banned.xhtml";
+        }
+        return "index.xhtml";
     }
 
    

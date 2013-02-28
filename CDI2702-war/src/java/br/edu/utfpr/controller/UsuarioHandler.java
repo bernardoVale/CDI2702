@@ -6,7 +6,10 @@ package br.edu.utfpr.controller;
 
 import br.utfpr.edu.controller.ejb.UsuarioBeanLocal;
 import br.utfpr.edu.controller.ejb.UsuarioBeanLocal;
+import br.utfpr.edu.controller.qualifiers.Hello;
+import br.utfpr.edu.model.annotation.HelloQualifier;
 import br.utfpr.edu.model.bean.Usuario;
+import br.utfpr.edu.util.HelloType;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -24,6 +27,8 @@ public class UsuarioHandler implements Serializable{
 
     @Inject
     private Usuario usuario;
+    @Inject @HelloQualifier(type= HelloType.COOLGUY)
+    private Hello hello;
     @EJB
     UsuarioBeanLocal userEJB;
     
@@ -38,6 +43,9 @@ public class UsuarioHandler implements Serializable{
     public UsuarioHandler() {
     }
 
+    public Hello getHello(){
+        return hello;
+    }
     /**
      * @return the usuario
      */

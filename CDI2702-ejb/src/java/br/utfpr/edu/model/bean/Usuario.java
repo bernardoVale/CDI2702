@@ -20,8 +20,10 @@ public class Usuario implements Serializable{
     private String nome;
     private String email;
     private String senha;
+    private boolean bannedFlag;
 
     public Usuario() {
+        this.bannedFlag = false;
     }
 
     public String getSenha() {
@@ -77,10 +79,21 @@ public class Usuario implements Serializable{
         this.senha = senha;
         
     }
-
+    
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + '}';
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha +
+                "flag="+bannedFlag+'}';
+    }
+
+    /**
+     * @return the bannedFlag
+     */
+    public boolean isBannedFlag() {
+        return bannedFlag;
+    }
+    public void setBannedFlag(boolean flag){
+        this.bannedFlag = flag;
     }
     
 }
